@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Horizon Hours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#000;--ink:#fff;--sub:rgba(255,255,255,.7);--violet:#6a4df0;--lilac:#a592f5;--gold:#f5c93b;--panel:#0b0a16;--chip:rgba(165,146,245,.16)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:520px;margin:0 auto;padding:20px 20px 56px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+.back{display:inline-flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:600;font-size:.92rem;min-height:44px}
+.back i{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#fff;color:var(--violet);font-style:normal;font-size:1.2rem;line-height:1}
+.brand{font-weight:700;font-size:.95rem;letter-spacing:.02em;border:1.5px solid var(--lilac);padding:4px 8px;border-radius:4px}
+h1{font-weight:700;font-size:clamp(2.5rem,13vw,3.6rem);line-height:1;margin:0 0 10px;letter-spacing:-.045em}
+h1 span{display:block;color:var(--gold)}
+.lede{color:var(--sub);margin:0 0 22px;font-size:1rem;line-height:1.55;max-width:36ch}
+.frame{border:1.5px solid var(--violet);border-radius:28px;padding:8px;background:linear-gradient(160deg,#0c0a24,#2a1f6b 130%);box-shadow:0 0 40px rgba(106,77,240,.28)}
+.scene{display:block;width:100%;height:auto;border-radius:20px;touch-action:none;cursor:ew-resize}
+.panel{margin-top:16px;border:1.5px solid var(--violet);border-radius:24px;padding:18px 18px 20px;background:var(--panel)}
+.readout{display:flex;justify-content:space-between;align-items:baseline;margin:0 2px 2px}
+.time{font-size:2.5rem;font-weight:700;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.name{font-size:1.05rem;color:var(--gold);font-weight:600}
+input[type=range]{width:100%;height:44px;background:transparent;-webkit-appearance:none;appearance:none}
+input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:3px;background:linear-gradient(90deg,#1a1450,var(--violet),var(--lilac))}
+input[type=range]::-moz-range-track{height:6px;border-radius:3px;background:linear-gradient(90deg,#1a1450,var(--violet),var(--lilac))}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;margin-top:-12px;border-radius:50%;background:#fff;border:0;box-shadow:0 0 0 5px rgba(165,146,245,.35)}
+input[type=range]::-moz-range-thumb{width:30px;height:30px;border-radius:50%;background:#fff;border:0}
+input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 0}
+button{font:inherit;font-weight:600;font-size:.95rem;color:var(--ink);background:var(--chip);border:1px solid rgba(165,146,245,.4);border-radius:999px;padding:12px 20px;min-height:44px;cursor:pointer}
+button.main{background:linear-gradient(90deg,#3a2fb8,var(--lilac));border-color:transparent}
+h2{font-weight:600;font-size:1rem;margin:26px 0 12px}
+.swatches{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 8px}
+.sw{width:58px;height:74px;border-radius:14px;padding:0 0 8px;border:1.5px solid var(--lilac);display:flex;align-items:flex-end;justify-content:center;font-size:.72rem;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.hint{color:var(--sub);font-size:.9rem;margin:0}
+.hex{margin-top:20px}
+.hex button{width:100%}
+.sig{margin:30px 0 0;color:var(--sub);font-size:.8rem;font-weight:600;letter-spacing:.06em}
+</style>
+</head>
+<body>
+<main>
+  <div class="top"><a class="back" href="https://lxnd8er.my.canva.site/" target="_blank" rel="noopener"><i>&lsaquo;</i>Back to portfolio</a><span class="brand">LXND 8ER</span></div>
+  <h1>Horizon <span>Hours</span></h1>
+  <p class="lede">Drag the sky through a whole day and keep the hours you love.</p>
+
+  <div class="frame">
+  <svg id="scene" class="scene" viewBox="0 0 400 440" role="img" aria-label="Landscape under a sky that changes with the time of day">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop id="s1" offset="0"/><stop id="s2" offset="1"/></linearGradient>
+      <radialGradient id="glow"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+    </defs>
+    <rect width="400" height="440" fill="url(#sky)"/>
+    <g id="stars" fill="#fff"></g>
+    <circle id="halo" r="70" fill="url(#glow)"/>
+    <circle id="orb" r="26"/>
+    <path id="h3" d="M0 300 Q90 240 190 285 T400 270 V440 H0Z"/>
+    <path id="h2" d="M0 340 Q110 280 220 330 T400 320 V440 H0Z"/>
+    <path id="h1" d="M0 385 Q130 345 250 380 T400 372 V440 H0Z"/>
+  </svg>
+  </div>
+
+  <div class="panel">
+    <div class="readout"><span class="time" id="time">9:00</span><span class="name" id="name">Morning</span></div>
+    <input id="range" type="range" min="0" max="1439" step="1" value="540" aria-label="Time of day">
+    <div class="row">
+      <button id="now">Jump to now</button>
+      <button id="keep" class="main">Keep this hour</button>
+    </div>
+  </div>
+
+  <h2>Your kept hours</h2>
+  <div class="swatches" id="kept"></div>
+  <p class="hint" id="hint">Nothing kept yet. Slide to a sky you like, then tap Keep this hour.</p>
+
+  <div class="hex"><button id="copy">Copy sky colors</button></div>
+  <p class="sig">ABDULLATEEF OLADIPUPO SALAUDEEN ( LXND.8ER )</p>
+</main>
+
+<script>
+(function(){
+var K=[[0,"#070b24","#1a2358"],[300,"#1d2160","#b05a85"],[390,"#f09a6e","#ffd9a3"],[720,"#3f8fe0","#bfe4ff"],[1020,"#4d86d6","#ffc98a"],[1130,"#c2556e","#ffa56b"],[1230,"#2a2160","#7a4a8c"],[1439,"#070b24","#1a2358"]];
+var N=[[0,"Deep night"],[270,"Before dawn"],[360,"First light"],[480,"Morning"],[660,"Midday"],[930,"Afternoon"],[1060,"Golden hour"],[1160,"Dusk"],[1260,"Night"]];
+var $=function(i){return document.getElementById(i)};
+var range=$("range"),svg=$("scene");
+function hx(c){return[1,3,5].map(function(i){return parseInt(c.substr(i,2),16)})}
+function mix(a,b,t){var A=hx(a),B=hx(b);return"#"+A.map(function(v,i){var x=Math.round(v+(B[i]-v)*t);return(x<16?"0":"")+x.toString(16)}).join("")}
+function lum(c){var a=hx(c);return(a[0]*.3+a[1]*.59+a[2]*.11)/255}
+function sky(m){for(var i=0;i<K.length-1;i++){if(m<=K[i+1][0]){var t=(m-K[i][0])/(K[i+1][0]-K[i][0]);return[mix(K[i][1],K[i+1][1],t),mix(K[i][2],K[i+1][2],t)]}}return[K[0][1],K[0][2]]}
+function nm(m){var n=N[0][1];N.forEach(function(x){if(m>=x[0])n=x[1]});return n}
+function fmt(m){var h=Math.floor(m/60),mm=m%60;return h+":"+(mm<10?"0":"")+mm}
+var st=$("stars");
+for(var i=0;i<46;i++){var c=document.createElementNS("http://www.w3.org/2000/svg","circle");c.setAttribute("cx",(i*97%400));c.setAttribute("cy",(i*53%230));c.setAttribute("r",(i%4?.8:1.5));st.appendChild(c)}
+var cur=540;
+function draw(m){
+  cur=m;var s=sky(m);
+  $("s1").setAttribute("stop-color",s[0]);$("s2").setAttribute("stop-color",s[1]);
+  var day=m>=360&&m<=1110;
+  var t=day?(m-360)/750:(m>1110?(m-1110)/690:(m+330)/690);
+  var x=40+320*t,y=300-230*Math.sin(Math.PI*t);
+  var orb=$("orb"),halo=$("halo");
+  orb.setAttribute("cx",x);orb.setAttribute("cy",y);halo.setAttribute("cx",x);halo.setAttribute("cy",y);
+  orb.setAttribute("fill",day?mix("#fff3c4","#ffb15c",Math.abs(t-.5)*2):"#eef1ff");
+  orb.setAttribute("r",day?26:20);
+  var night=Math.max(0,1-lum(s[0])*3.2);
+  st.setAttribute("opacity",Math.min(1,night));
+  halo.setAttribute("opacity",day?.9:.35);
+  var base=s[1];
+  $("h3").setAttribute("fill",mix(base,"#10142e",.55));
+  $("h2").setAttribute("fill",mix(base,"#0c1026",.72));
+  $("h1").setAttribute("fill",mix(base,"#080b1c",.88));
+  $("time").textContent=fmt(m);$("name").textContent=nm(m);
+  range.value=m;
+}
+range.addEventListener("input",function(){draw(+range.value)});
+function pick(e){var b=svg.getBoundingClientRect();var p=(e.clientX-b.left)/b.width;draw(Math.round(Math.max(0,Math.min(1,p))*1439))}
+var drag=false;
+svg.addEventListener("pointerdown",function(e){drag=true;svg.setPointerCapture(e.pointerId);pick(e)});
+svg.addEventListener("pointermove",function(e){if(drag)pick(e)});
+svg.addEventListener("pointerup",function(){drag=false});
+function go(to,ms){
+  var from=cur,t0=null;
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches){draw(to);return}
+  function f(ts){if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/ms);p=1-Math.pow(1-p,3);draw(Math.round(from+(to-from)*p));if(p<1)requestAnimationFrame(f)}
+  requestAnimationFrame(f);
+}
+$("now").addEventListener("click",function(){var d=new Date();go(d.getHours()*60+d.getMinutes(),1200)});
+
+var kept=[];
+try{kept=JSON.parse(localStorage.getItem("hh-kept")||"[]")}catch(e){kept=[]}
+function save(){try{localStorage.setItem("hh-kept",JSON.stringify(kept))}catch(e){}}
+function renderKept(){
+  var box=$("kept");box.innerHTML="";
+  $("hint").style.display=kept.length?"none":"block";
+  kept.forEach(function(m){
+    var s=sky(m),b=document.createElement("button");
+    b.className="sw";b.style.background="linear-gradient("+s[0]+","+s[1]+")";
+    b.textContent=fmt(m);b.setAttribute("aria-label","Go to "+fmt(m));
+    b.addEventListener("click",function(){go(m,900)});
+    b.addEventListener("contextmenu",function(e){e.preventDefault();kept=kept.filter(function(x){return x!==m});save();renderKept()});
+    box.appendChild(b);
+  });
+}
+$("keep").addEventListener("click",function(){
+  if(kept.indexOf(cur)<0){kept.push(cur);kept.sort(function(a,b){return a-b});if(kept.length>8)kept.shift();save();renderKept()}
+});
+$("copy").addEventListener("click",function(){
+  var s=sky(cur),txt=s[0]+" → "+s[1],b=$("copy");
+  function ok(){b.textContent="Copied "+txt;setTimeout(function(){b.textContent="Copy sky colors"},1800)}
+  try{navigator.clipboard.writeText(txt).then(ok,function(){b.textContent=txt})}catch(e){b.textContent=txt}
+});
+renderKept();
+draw(240);
+setTimeout(function(){go(540,3600)},300);
+})();
+</script>
+</body>
+</html>
